@@ -76,6 +76,17 @@ app.post('/', async (req, res) => {
 });
 
 
+
+
+
+// 🔹 Agregar reseñas
+const resenasRoutes = require('./routes/resenas');
+app.use('/resenas', resenasRoutes);
+
+
+
+
+
 //Iniciar el servidor
 app.listen(port, () => {
   console.log(`🚀 Servidor corriendo en puerto http://localhost:${port}`);
