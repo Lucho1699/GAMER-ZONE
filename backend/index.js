@@ -1,7 +1,9 @@
+require('dotenv').config();
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
-require('dotenv').config();
+const authRoutes = require('./routes/auth');
+
 
 const Game = require('./models/game');
 
@@ -10,6 +12,7 @@ const port = process.env.PORT || 3000;
 
 /*Habilitar Permisos CORS de nuestro api*/
 app.use(cors());
+
 
 /*Convertir el body de las peticiones a formato json*/
 app.use(express.json());
@@ -20,6 +23,8 @@ mongoose.connect(process.env.MONGODB_URI)
   .then(() => console.log('✅ Conectado a MongoDB'))
   .catch((error) => console.error('❌ Error conectando a MongoDB:', error));
 
+  //usar la ruta de autenticacion
+app.use('/auth', authRoutes);
 
 // 🔹 Obtener todos los juegos (GET /data)
 app.get('/', async (req, res) => {
@@ -121,6 +126,9 @@ app.put('/:id', async (req, res) => {
 const resenasRoutes = require('./routes/resenas');
 app.use('/resenas', resenasRoutes);
 
+
+// Rutas de autenticación
+app.use('/auth', authRoutes);
 
 
 
