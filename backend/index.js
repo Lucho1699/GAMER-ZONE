@@ -91,6 +91,28 @@ app.delete('/:id', async (req, res) => {
     res.status(500).json({ error: 'Error eliminando el juego' });
   }});
 
+//editar un juego
+app.put('/:id', async (req, res) => {
+  console.log("📨 Llegó un PUT a /data/:id");
+  const gameId = req.params.id;
+  const { name, gender, developer, description, imageSrc } = req.body;
+
+  try {
+    const updatedGame = await Game.findByIdAndUpdate
+    (gameId,
+      { name, gender, developer, description, imageSrc },
+      { new: true }
+    );
+    if (!updatedGame) {
+      return res.status(404).json({ error: 'Juego no encontrado' });
+    }
+    console.log("✏️ Juego actualizado correctamente:", updatedGame);
+    res.status(200).json(updatedGame);
+  } catch (err) {
+    console.error("❌ Error al actualizar juego:", err);
+    res.status(500).json({ error: 'Error actualizando el juego' });
+  }
+});
 
 
 
