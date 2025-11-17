@@ -10,7 +10,10 @@ function TarjetaJuego({ gamename, developer, gender, description, imagesrc, onDe
                     <p><strong>Desarrollador:</strong> {developer}</p>
                     <p><strong>Género:</strong> {gender}</p>
                     <p><strong>Descripcioción:</strong> {description}</p>
-                    <p><strong>Completado:</strong> {juego_completo ? "Si" : "No"}</p>
+                    <p><strong>Completado:</strong> {juego_completo ? "Si" : "No"}<button className="boton-completo">✅</button><button className="boton-imcompleto">❌</button></p>
+
+                    
+                    
                     
                     <button className="boton-eliminar" onClick={()=> onDelete(id)}>Eliminar</button>
                    

@@ -6,6 +6,8 @@ const gameSchema = new mongoose.Schema({
   developer: { type: String, required: true },
     description: { type: String, required: true },
     imageSrc: { type: String, required: true },
+    userId: { type: mongoose.Schema.Types.ObjectId, ref: 'user', required: true},
+    completado: {type: Boolean, default: true}
 
 });
 

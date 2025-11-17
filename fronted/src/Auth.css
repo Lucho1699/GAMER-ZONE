@@ -1,0 +1,300 @@
+/* ========== PÁGINA AUTH - TEMA GAMER ========== */
+.auth-page {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: radial-gradient(circle at top, #0a0a0a 0%, #121212 100%);
+  padding: 20px;
+  position: relative;
+  font-family: "Orbitron", sans-serif;
+}
+
+/* ========== CONTENEDOR PRINCIPAL ========== */
+.auth-container {
+  display: flex;
+  width: 90%;
+  max-width: 1100px;
+  height: 600px;
+  background: linear-gradient(145deg, #141414, #1a1a1a);
+  border-radius: 20px;
+  border: 2px solid #0ff;
+  overflow: hidden;
+  box-shadow: 0 0 40px rgba(0, 255, 255, 0.4), 0 0 80px rgba(255, 0, 255, 0.2);
+  position: relative;
+}
+
+/* ========== PANELES ========== */
+.auth-panel {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px;
+  position: relative;
+  transition: all 0.6s ease-in-out;
+}
+
+.left-panel {
+  background: rgba(0, 0, 0, 0.6);
+  border-right: 1px solid rgba(0, 255, 255, 0.2);
+}
+
+.right-panel {
+  background: rgba(10, 10, 10, 0.8);
+}
+
+/* ========== EFECTO DE DESLIZAMIENTO ========== */
+.auth-container.register-active .left-panel {
+  transform: translateX(0);
+}
+
+.auth-container.register-active .right-panel {
+  transform: translateX(0);
+}
+
+/* ========== FORMULARIOS ========== */
+.form-container {
+  width: 100%;
+  max-width: 400px;
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+.form-container h2 {
+  font-size: 32px;
+  font-weight: 700;
+  color: #0ff;
+  margin-bottom: 30px;
+  text-align: center;
+  text-shadow: 0 0 10px #0ff, 0 0 20px #0ff;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.form-container form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.form-container input {
+  width: 100%;
+  padding: 15px 20px;
+  border: 1px solid #0ff;
+  border-radius: 10px;
+  font-size: 16px;
+  background-color: #0f0f0f;
+  color: #fff;
+  font-family: "Orbitron", sans-serif;
+  transition: all 0.3s ease;
+  outline: none;
+}
+
+.form-container input:focus {
+  border-color: #ff00ff;
+  box-shadow: 0 0 15px rgba(255, 0, 255, 0.5);
+}
+
+.form-container input::placeholder {
+  color: #666;
+}
+
+/* ========== BOTONES ========== */
+.btn-primary {
+  width: 100%;
+  padding: 15px;
+  background: linear-gradient(90deg, #0ff, #ff00ff);
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  font-size: 18px;
+  font-weight: 700;
+  font-family: "Orbitron", sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 0 25px rgba(0, 255, 255, 0.6), 0 0 50px rgba(255, 0, 255, 0.4);
+}
+
+.btn-primary:active {
+  transform: translateY(0);
+}
+
+.btn-secondary {
+  padding: 12px 30px;
+  background: transparent;
+  color: #0ff;
+  border: 2px solid #0ff;
+  border-radius: 25px;
+  font-size: 16px;
+  font-weight: 600;
+  font-family: "Orbitron", sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-secondary:hover {
+  background: #0ff;
+  color: #000;
+  transform: translateY(-2px);
+  box-shadow: 0 0 20px rgba(0, 255, 255, 0.6);
+}
+
+/* ========== GALERÍA ========== */
+.gallery-container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 15px;
+  width: 100%;
+  max-width: 450px;
+}
+
+.gallery-item {
+  aspect-ratio: 1;
+  border-radius: 15px;
+  border: 2px solid #0ff;
+  overflow: hidden;
+  box-shadow: 0 0 15px rgba(0, 255, 255, 0.3);
+  transition: all 0.3s ease;
+  animation: neonPulse 2s infinite alternate;
+}
+
+.gallery-item:hover {
+  transform: scale(1.08) rotate(2deg);
+  box-shadow: 0 0 25px rgba(0, 255, 255, 0.6), 0 0 40px rgba(255, 0, 255, 0.4);
+  border-color: #ff00ff;
+}
+
+.gallery-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.switch-message {
+  text-align: center;
+}
+
+.switch-message p {
+  font-size: 18px;
+  color: #0ff;
+  margin-bottom: 15px;
+  text-shadow: 0 0 5px #0ff;
+}
+
+/* ========== MENSAJES ========== */
+.message {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  padding: 15px 25px;
+  border-radius: 10px;
+  font-size: 16px;
+  font-weight: 600;
+  font-family: "Orbitron", sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.8);
+  animation: slideIn 0.3s ease-in-out;
+  z-index: 1000;
+  border: 2px solid;
+}
+
+.message.success {
+  background: rgba(0, 255, 0, 0.1);
+  color: #0f0;
+  border-color: #0f0;
+  box-shadow: 0 0 20px rgba(0, 255, 0, 0.5);
+}
+
+.message.error {
+  background: rgba(255, 0, 100, 0.1);
+  color: #f06;
+  border-color: #f06;
+  box-shadow: 0 0 20px rgba(255, 0, 100, 0.5);
+}
+
+/* ========== ANIMACIONES ========== */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateX(400px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes neonPulse {
+  0%, 100% { 
+    box-shadow: 0 0 10px rgba(0, 255, 255, 0.3); 
+  }
+  50% { 
+    box-shadow: 0 0 20px rgba(255, 0, 255, 0.4); 
+  }
+}
+
+@keyframes neonGlowAuth {
+  0%, 100% { 
+    box-shadow: 0 0 30px rgba(0, 255, 255, 0.4), 0 0 60px rgba(255, 0, 255, 0.2); 
+  }
+  50% { 
+    box-shadow: 0 0 40px rgba(255, 0, 255, 0.5), 0 0 80px rgba(0, 255, 255, 0.3); 
+  }
+}
+
+.auth-container:hover {
+  animation: neonGlowAuth 1.5s infinite alternate;
+}
+
+/* ========== RESPONSIVE ========== */
+@media (max-width: 768px) {
+  .auth-container {
+    flex-direction: column;
+    height: auto;
+    min-height: 600px;
+  }
+
+  .left-panel {
+    border-right: none;
+    border-bottom: 1px solid rgba(0, 255, 255, 0.2);
+  }
+
+  .gallery-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .form-container h2 {
+    font-size: 24px;
+  }
+}

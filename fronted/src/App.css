@@ -1,0 +1,133 @@
+/* RESETEO BÁSICO */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Orbitron", sans-serif; /* Fuente gamer */
+  background: radial-gradient(circle at top, #0a0a0a 0%, #121212 100%);
+  color: #f1f1f1;
+}
+
+/* === TARJETA DE JUEGO === */
+.tarjeta-juego-container {
+  width: 300px;
+  height: 460px;
+  background: linear-gradient(145deg, #141414, #1a1a1a);
+  border: 2px solid #0ff; /* Borde cian neón */
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 0 20px rgba(0, 255, 255, 0.3);
+  text-align: center;
+  margin: 15px;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.tarjeta-juego-container:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 30px rgba(0, 255, 255, 0.6);
+  border-color: #ff00ff;
+}
+
+/* Imagen del juego */
+.imagen-tarjeta-juego img {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+  border-bottom: 2px solid #0ff;
+}
+
+/* Información del juego */
+.informacion-tarjeta-juego {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 15px;
+  background: rgba(0, 0, 0, 0.6);
+  color: #eee;
+}
+
+.informacion-tarjeta-juego h2 {
+  font-size: 1.3em;
+  color: #0ff;
+  margin-bottom: 10px;
+  text-shadow: 0 0 8px #0ff;
+}
+
+.informacion-tarjeta-juego p {
+  font-size: 0.95em;
+  line-height: 1.4;
+  margin-bottom: 5px;
+  color: #ccc;
+}
+
+/* === CONTENEDOR DE BIBLIOTECA === */
+.library-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 40px;
+  gap: 20px;
+  background: radial-gradient(circle at center, #0d0d0d 0%, #090909 100%);
+  border-top: 2px solid #0ff;
+}
+
+/* === FORMULARIO NUEVO JUEGO === */
+.form-new-edit-game {
+  max-width: 420px;
+  margin: 40px auto;
+  padding: 25px;
+  background: linear-gradient(135deg, #111, #1a1a1a);
+  border: 2px solid #ff00ff;
+  border-radius: 10px;
+  box-shadow: 0 0 25px rgba(255, 0, 255, 0.3);
+  color: #fff;
+}
+
+.form-new-edit-game input {
+  width: 100%;
+  padding: 12px;
+  margin: 10px 0;
+  border: 1px solid #0ff;
+  border-radius: 6px;
+  background-color: #0f0f0f;
+  color: #fff;
+  outline: none;
+  transition: 0.2s;
+}
+
+.form-new-edit-game input:focus {
+  border-color: #ff00ff;
+  box-shadow: 0 0 8px #ff00ff;
+}
+
+.form-new-edit-game button {
+  width: 100%;
+  padding: 12px;
+  background: linear-gradient(90deg, #0ff, #ff00ff);
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: 0.3s;
+}
+
+.form-new-edit-game button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 15px #ff00ff;
+}
+
+@keyframes neonGlow {
+  0%, 100% { box-shadow: 0 0 15px #0ff; }
+  50% { box-shadow: 0 0 25px #ff00ff; }
+}
+
+.container-tarjeta-juego:hover {
+  animation: neonGlow 1.2s infinite alternate;
+}

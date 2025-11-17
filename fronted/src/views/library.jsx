@@ -13,18 +13,29 @@ function Library() {
   const [description, setDescription] = useState("");
   const [imageSrc, setImageSrc] = useState("");
   const [editando, setEditando] = useState(false);
+  const [cargando, setCargando] = useState(true);
+
+  const token = localStorage.getItem('token');
 
 
   // 🔹 Obtener juegos al cargar la página
   useEffect(() => {
-    fetch(URL_API)
+    fetch(URL_API, {
+      headers: {
+        'Authorization': `Bearer ${token}`
+      }
+    })
       .then((res) => res.json())
-      .then((data) => setJuegos(data))
+      .then((data) => {
+        setJuegos(data);
+        setCargando(false);
+      })
       .catch((err) => {
         console.error("Error al obtener juegos:", err);
         setJuegos([]);
+        setCargando(false);
       });
-  }, []);
+  }, [token]); // ← Agregado token como dependencia
 
   // 🔹 Guardar un nuevo juego
   const saveGame = async (e) => {
@@ -37,6 +48,7 @@ function Library() {
           method: "PUT",
           headers: {
             "Content-Type": "application/json",
+            "Authorization": `Bearer ${token}`
           },
           body: JSON.stringify({
             name,
@@ -82,6 +94,7 @@ function Library() {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
+            "Authorization": `Bearer ${token}`
           },
           body: JSON.stringify(nuevoJuego),
         });
@@ -91,7 +104,7 @@ function Library() {
         console.log("Respuesta del servidor:", data);
 
         // Actualizar la lista de juegos con el nuevo juego agregado
-        setJuegos((prev) => [...prev, data]);
+        setJuegos((prev) => [...prev, data.juego]);
 
 
         // Limpiar campos
@@ -124,13 +137,26 @@ function Library() {
   const eliminarJuego = async (Id) => {
     const res = await fetch(`${URL_API}/${Id}`, {
       method: "DELETE",
+      headers: {
+        "Authorization": `Bearer ${token}`
+      }
     });
     if (res.ok) {
       setJuegos(juegos.filter((juego) => juego._id !== Id));
     }
   };
 
+  const handleLogout = () => {
+    localStorage.removeItem('token');
+    localStorage.removeItem('user');
+    window.location.href = '/auth';
+  };
 
+
+  // Mostrar mensaje de carga
+  if (cargando) {
+    return <div className="loading">Cargando juegos...</div>;
+  }
 
 
   return (
@@ -171,25 +197,35 @@ function Library() {
             type="text"
             placeholder="URL de la imagen"
           />
-          <button type="submit">Guardar Juego</button>
+          <button type="submit">{editando ? "Actualizar Juego" : "Guardar Juego"}</button>
         </form>
       </div>
 
       <div className="library-container">
-        {juegos.map((juego, index) => (
-          <Tarjetajuego
-            key={juego._id || index}
-            id={juego._id}
-            gamename={juego.name}
-            developer={juego.developer}
-            gender={juego.gender}
-            description={juego.description}
-            imagesrc={juego.imageSrc}
-            juego_completo={juego.juego_completo}
-            onDelete={eliminarJuego}
-            onEdit={() => activarEdicion(juego)}
-          />
-        ))}
+        {juegos.length === 0 ? (
+          <p>No tienes juegos en tu biblioteca. ¡Agrega uno!</p>
+        ) : (
+          juegos.map((juego, index) => (
+            <Tarjetajuego
+              key={juego._id || index}
+              id={juego._id}
+              gamename={juego.name}
+              developer={juego.developer}
+              gender={juego.gender}
+              description={juego.description}
+              imagesrc={juego.imageSrc}
+              juego_completo={juego.juego_completo}
+              onDelete={eliminarJuego}
+              onEdit={() => activarEdicion(juego)}
+            />
+          ))
+        )}
+      </div>
+      
+      <div>
+        <button onClick={handleLogout} className="btn-logout">
+          Cerrar Sesión
+        </button>
       </div>
     </>
   );
