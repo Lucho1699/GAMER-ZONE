@@ -161,7 +161,8 @@ function Library() {
 
   return (
     <>
-      <h1>🎮 Mi Biblioteca de Juegos</h1>
+      <h1 className="bienvenida">🕹️Bienvenido A Tu almacen De Juegos</h1> 
+      <h2 className="header">🎮 Mi Biblioteca de Juegos</h2>
 
       <div className="form-new-edit-game">
         <form onSubmit={saveGame}>

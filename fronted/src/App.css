@@ -11,6 +11,15 @@ body {
   color: #f1f1f1;
 }
 
+
+.bienvenida{
+  margin: 10px;
+}
+
+.header{
+  margin-left: 510px;
+}
+
 /* === TARJETA DE JUEGO === */
 .tarjeta-juego-container {
   width: 300px;
@@ -130,4 +139,63 @@ body {
 
 .container-tarjeta-juego:hover {
   animation: neonGlow 1.2s infinite alternate;
+}
+
+.boton-eliminar {
+  margin: 10.5px;
+  padding: 12px 30px;
+  background: linear-gradient(90deg, #ff0066, #ff00ff);
+  color: #fff;
+  border: 2px solid #ff0066;
+  border-radius: 10px;
+  font-size: 16px;
+  font-weight: 700;
+  font-family: "Orbitron", sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 15px rgba(255, 0, 102, 0.4);
+}
+
+.boton-eliminar:hover {
+  background: linear-gradient(90deg, #ff00ff, #ff0066);
+  transform: translateY(-3px);
+  box-shadow: 0 0 25px rgba(255, 0, 102, 0.7), 0 0 40px rgba(255, 0, 255, 0.5);
+  border-color: #ff00ff;
+}
+
+.boton-eliminar:active {
+  transform: translateY(0);
+  box-shadow: 0 0 10px rgba(255, 0, 102, 0.5);
+}
+
+
+.boton-editar {
+  margin: 10.5px;
+  padding: 12px 30px;
+  background: linear-gradient(90deg, #ff0066, #ff00ff);
+  color: #fff;
+  border: 2px solid #ff0066;
+  border-radius: 10px;
+  font-size: 16px;
+  font-weight: 700;
+  font-family: "Orbitron", sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 15px rgba(255, 0, 102, 0.4);
+}
+
+.boton-editar:hover {
+  background: linear-gradient(90deg, #ff00ff, #ff0066);
+  transform: translateY(-3px);
+  box-shadow: 0 0 25px rgba(255, 0, 102, 0.7), 0 0 40px rgba(255, 0, 255, 0.5);
+  border-color: #ff00ff;
+}
+
+.boton-editar:active {
+  transform: translateY(0);
+  box-shadow: 0 0 10px rgba(255, 0, 102, 0.5);
 }
