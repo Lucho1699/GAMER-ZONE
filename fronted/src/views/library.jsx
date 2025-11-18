@@ -14,6 +14,8 @@ function Library() {
   const [imageSrc, setImageSrc] = useState("");
   const [editando, setEditando] = useState(false);
   const [cargando, setCargando] = useState(true);
+  const [search, setSearch] = useState("");
+
 
   const token = localStorage.getItem('token');
 
@@ -184,11 +186,31 @@ const juego_completo = async (id, nuevoEstado) => {
     return <div className="loading">Cargando juegos...</div>;
   }
 
+  //filtar los juegos antes de mostrarlos
+  const juegosFiltrados = juegos.filter((juego) => {
+  const q = search.toLowerCase();
+  return (
+    juego.name.toLowerCase().includes(q) ||
+    juego.developer.toLowerCase().includes(q) ||
+    juego.gender.toLowerCase().includes(q)
+  );
+});
+
+
 
   return (
     <>
       <h1 className="bienvenida">🕹️Bienvenido A Tu almacen De Juegos</h1> 
       <h2 className="header">🎮 Mi Biblioteca de Juegos</h2>
+
+      <input
+  type="text"
+  placeholder="Buscar juegos por nombre, género o desarrollador..."
+  className="search-bar"
+  value={search}
+  onChange={(e) => setSearch(e.target.value)}
+/>
+
 
       <div className="form-new-edit-game">
         <form onSubmit={saveGame}>
@@ -232,7 +254,7 @@ const juego_completo = async (id, nuevoEstado) => {
         {juegos.length === 0 ? (
           <p>No tienes juegos en tu biblioteca. ¡Agrega uno!</p>
         ) : (
-          juegos.map((juego, index) => (
+          juegosFiltrados.map((juego, index) => (
             <Tarjetajuego
               key={juego._id || index}
               id={juego._id}
