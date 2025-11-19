@@ -14,6 +14,8 @@ function ModalReseñas({ juegoId, gamename, onClose }) {
   const [contenido, setContenido] = useState("");
   const [puntuacion, setPuntuacion] = useState(5);
   const [recomendado, setRecomendado] = useState(true);
+  const [horasJugadas, setHorasJugadas] = useState(0);
+
 
   // Cargar reseñas al abrir el modal
   useEffect(() => {
@@ -49,8 +51,10 @@ function ModalReseñas({ juegoId, gamename, onClose }) {
           titulo,
           contenido,
           puntuacion,
-          recomendado
+          recomendado,
+          horasJugadas  
         })
+
       });
 
       const data = await res.json();
@@ -141,6 +145,15 @@ function ModalReseñas({ juegoId, gamename, onClose }) {
                 </label>
               </div>
               <button type="submit" className="btn-guardar-resena">Guardar Reseña</button>
+              <input
+              type="number"
+              placeholder="Horas jugadas"
+              value={horasJugadas}
+              onChange={(e) => setHorasJugadas(Number(e.target.value))}
+              min="0"
+              required
+            />
+
             </form>
           )}
 
@@ -160,6 +173,7 @@ function ModalReseñas({ juegoId, gamename, onClose }) {
                     </div>
                   </div>
                   <p className="resena-contenido">{resena.contenido}</p>
+                      <p className="resena-horas">⏱️ Horas jugadas: <strong>{resena.horasJugadas}</strong> </p>
                   <div className="resena-footer">
                     <span className={`resena-recomendado ${resena.recomendado ? 'si' : 'no'}`}>
                       {resena.recomendado ? "👍 Recomendado" : "👎 No recomendado"}

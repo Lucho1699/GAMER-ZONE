@@ -18,9 +18,9 @@ router.get('/juego/:juegoId', authMiddleware, async (req, res) => {
 // POST - Crear una nueva reseña
 router.post('/', authMiddleware, async (req, res) => {
   try {
-    const { juegoId, titulo, contenido, puntuacion, aspectosPositivos, aspectosNegativos, recomendado } = req.body;
+    const { juegoId, titulo, contenido, puntuacion, aspectosPositivos, aspectosNegativos, recomendado, horasJugadas} = req.body;
 
-    if (!juegoId || !titulo || !contenido || puntuacion === undefined) {
+      if (!juegoId || !titulo || !contenido || puntuacion === undefined || horasJugadas === undefined) {
       return res.status(400).json({ error: 'Faltan campos obligatorios' });
     }
 
@@ -31,7 +31,8 @@ router.post('/', authMiddleware, async (req, res) => {
       puntuacion,
       aspectosPositivos: aspectosPositivos || [],
       aspectosNegativos: aspectosNegativos || [],
-      recomendado: recomendado !== undefined ? recomendado : true
+      recomendado: recomendado !== undefined ? recomendado : true,
+      horasJugadas
     });
 
     await nuevaResena.save();

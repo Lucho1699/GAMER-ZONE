@@ -37,7 +37,13 @@ const resenaSchema = new mongoose.Schema({
   fechaCreacion: {
     type: Date,
     default: Date.now
-  }
+  },
+  horasJugadas: {
+  type: Number,
+  required: true,
+  min: 0
+},
+
 }, {
   timestamps: true
 });

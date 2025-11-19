@@ -455,3 +455,37 @@ body {
 .search-bar::placeholder {
   color: rgba(255,255,255,0.6);
 }
+
+
+.recomendacion-group {
+  display: flex;
+  gap: 10px;
+  margin: 10px 0;
+}
+
+.recomendacion-btn {
+  border: 1px solid #ccc;
+  padding: 8px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  background: #222;
+  color: #fff;
+  transition: 0.2s;
+}
+
+.recomendacion-btn.selected {
+  background: #4CAF50;
+  border-color: #4CAF50;
+}
+
+.recomendacion-btn.no.selected {
+  background: #d9534f;
+  border-color: #d9534f;
+}
+
+.resena-horas {
+  margin-top: 6px;
+  font-size: 14px;
+  color: #bdbdbd;
+  font-style: italic;
+}
