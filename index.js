@@ -11,7 +11,11 @@ const app = express();
 const port = process.env.PORT || 3000;
 
 /*Habilitar Permisos CORS de nuestro api*/
-app.use(cors());
+app.use(cors({
+  origin: "https://fronted-gamer-zone.vercel.app",
+  methods: "GET,POST,PUT,PATCH,DELETE",
+  allowedHeaders: "Content-Type,Authorization"
+}));
 
 /*Convertir el body de las peticiones a formato json*/
 app.use(express.json());
@@ -150,5 +154,5 @@ app.use('/resenas', resenasRoutes);
 
 //Iniciar el servidor
 app.listen(port, () => {
-  console.log(`🚀 Servidor corriendo en puerto http://localhost:${port}`);
+  console.log(`🚀 Servidor corriendo en puerto ${port}`);
 });
